@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/util.css" />
+    <title>Frontend-Project</title>
+  </head>
+
+  <!-- navbar section___________Start -->
+  <body>
+    <nav class="white z-depth-0 top-navbar">
+      <div class="nav-wrapper">
+        <a href="#!" class="blue-text hide-on-med-and-up">users managment</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text"
+          ><i class="material-icons">menu</i>
+        </a>
+        <ul class="hide-on-med-and-down">
+          <li><a href="/index.html" class="blue-text">home</a></li>
+          <li><a href="badges.html" class="blue-text">codeyad</a></li>
+          <li><a href="/users.html" class="blue-text">user managment</a></li>
+          <li><a href="mobile.html" class="blue-text">AQ fast lesrning</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="/assets/images/office-2.webp" class="w-full" />
+          </div>
+          <a><img class="circle" src="/assets/images/user.png.jpg" /></a>
+          <a><span class="white-text name">Iman Rezae</span></a>
+          <a><span class="white-text email">iman1384@gmail.com</span></a>
+        </div>
+      </li>
+      <li>
+        <a href="https://codeyad.com"
+          ><i class="material-icons">insert_link</i>codeyad</a>
+      </li>
+      <li>
+        <a href="https://google.com"
+          ><i class="material-icons">insert_link</i>Google</a
+        >
+      </li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="/">Home</a></li>
+      <li><a class="waves-effect" href="/users.html">Users</a></li>
+    </ul>
+
+    <!-- navbar section___________End -->
+
+    <!-- user managment section ______________Start -->
+
+    <section id="tpo-action-section">
+      <div>
+        <button
+          class="waves-effect waves-light btn blue darken-3 p-l-30 p-l-30 w-full rounded-pill">
+          <i class="material-icons m-r-5">add</i>
+          Add User
+        </button>
+      </div>
+    </section>
+
+    <!-- user managment section ______________End -->
+
+    <!-- search section ______________Start -->
+
+    <section id="tpo-action-section">
+      <div class="input-field col s12">
+        <input id="search" type="text" class="validate" />
+        <label for="search">
+          <i class="material-icons pos-relative top-7">search</i>search</label>
+      </div>
+    </section>
+
+    <!-- search section ______________End -->
+
+    <script src="assets/materialize/js/materialize.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
