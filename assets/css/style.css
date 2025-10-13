@@ -11,3 +11,10 @@
     }
 
 }
+
+.user-list-item.active .user-list-arrow-icon{
+    transform: rotate(180deg);
+}
+.user-list-item.active , .user-list-item.active .collapsible-header{
+    background-color: rgb(212, 215, 218);
+}
