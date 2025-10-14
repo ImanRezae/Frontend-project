@@ -58,10 +58,10 @@
 
     <!-- user managment section ______________Start -->
 
-    <section id="top_action_section" class="row">
+    <section id="top_action_section" class="row m-b-0 container">
       <div class="p-l-10 p-r-10 p-t-10 col s12 m3 l2">
         <button
-          class="waves-effect waves-light btn blue darken-3 p-l-30 p-l-30 w-full rounded-pill flex-c">
+          id="add_user_button" class="waves-effect waves-light btn blue darken-3 p-l-30 p-l-30 w-full rounded-pill flex-c">
           <i class="material-icons m-r-5">add</i>
           Add user
         </button>
@@ -81,7 +81,6 @@
 
     <div class="col l2 hide-on-med-and-down"></div>
 
-    <!-- search section ______________End -->
 
     <section class="user-list-section">
 
@@ -254,7 +253,65 @@
 
       </div>
 
+      <div class="pagination_container container p-l-9 p-r-9 p-t-15 p-b-10 flex-sb-m pos-fixed left-0 right-0 bottom-0 z-depth-4 rounded_top_30">
+
+        <div class="pagination_item_counts flex-l p-l-10 flex-l-m">
+          <span class="m-r-5 m-l-5 max-w-50">
+            <input type="number" class="blue-text darken-2 no-border center-align m-b-0" value="10">
+          </span>
+          of
+          <span class="blue-text darken-2 m-r-5 m-l-5">100</span>
+        </div>
+
+        <div class="pagination_buttom ">
+
+          <i class="material-icons blue darken-2 m-r-5 m-l-5 p-l-5 p-r-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded-pill">
+            keyboard_arrow_left</i>
+          <i class="material-icons blue darken-2 m-r-5 m-l-5 p-l-5 p-r-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded-pill">
+            keyboard_arrow_right</i>
+
+        </div>
+
+      </div>
+
     </section>
+
+    <div class="add_user_modal_back dis-none"></div>
+    <div class="add_user_modal container rounded_top_30">
+
+      <div class="row p-l-40 p-r-40 p-b-10 p-t-10 center-on-small-only">
+      <h5>
+        <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person-add</i>
+        Add User
+      </h5>
+
+      <form>
+
+        <div class="input-field col s12">
+          <input id="name" type="text" class="validate">
+          <label for="text">Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate">
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="username">Email</label>
+        </div>
+
+        <button type="button" class="waves-effect waves-light btn blue darken-3 m-t-20 m-b-10 w-full max-w-250 rounded-pill">
+          submit
+        </button>
+
+      </form>
+
+    </div>
+    </div>
+
+    
+
+     <!-- search section ______________End -->
 
     <script src="/assets/js/users.js"></script>
     <script src="assets/materialize/js/materialize.min.js"></script>
