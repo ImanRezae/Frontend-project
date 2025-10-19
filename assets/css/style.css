@@ -80,3 +80,6 @@ table.highlight > tbody > tr:hover {
     margin: 0 0 0 25px !important;
 
 }
+.gray{
+    color: gray;
+}

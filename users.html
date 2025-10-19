@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"/>
       <link rel="stylesheet" href="/assets/materialize/css/materialize-rtl.css">
-      <link rel="Icons" type="image/x-icon" href="/assets/images/fawicon.ico">
+      <link rel="Icons" type="image/x-icon" href="/fawicon.ico">
     <link rel="stylesheet" href="/assets/css/util.css" />
     <title>Frontend-Project</title>
   </head>
 
-  <!-- navbar section___________Start -->
-  <body dir="rtl">
+  <body dir="rtl" x-data="usersData">
+
+     <!-- navbar section___________Start -->
     <nav class="white z-depth-0 top-navbar">
       <div class="nav-wrapper">
         <a href="#!" class="blue-text hide-on-med-and-up">users managment</a>
@@ -84,7 +85,7 @@
     <div class="col l2 hide-on-med-and-down"></div>
 
 
-    <section class="user-list-section">
+    <section class="user-list-section" x-init="getUsers"> 
 
       <ul class="collapsible hide-on-med-and-up">
         <li class="user-list-item">
@@ -192,65 +193,24 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="desktop-table-body">
+            <template x-for="user in users">
             <tr>
-              <td>1</td>
-              <td>Iman</td>
-              <td>ImanR</td>
-              <td>Iman1384@email.com</td>
-              <td>berlin _example _street</td>
+              <td x-text="user.id"></td>
+              <td x-text="user.name"></td>
+              <td x-text="user.username"></td>
+              <td x-text="user.email"></td>
+              <td x-text="user.address.city+'_'+user.address.street"></td>
               <td>
 
                 <i class="material-icons red-text m-r-5 m-l-5 hov-pointer">delete_forever</i>
                 <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
-
-                <tr>
-              <td>1</td>
-              <td>Iman</td>
-              <td>ImanR</td>
-              <td>Iman1384@email.com</td>
-              <td>berlin _example _street</td>
-              <td>
-
-                <i class="material-icons red-text m-r-5 m-l-5 hov-pointer">delete_forever</i>
-                <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
-
               </td>
             </tr>
+            </template>
 
-            <tr>
-              <td>1</td>
-              <td>Iman</td>
-              <td>ImanR</td>
-              <td>Iman1384@email.com</td>
-              <td>berlin _example _street</td>
-              <td>
-
-                <i class="material-icons red-text m-r-5 m-l-5 hov-pointer">delete_forever</i>
-                <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
-
-              </td>
-            </tr>
-
-            <tr>
-              <td>1</td>
-              <td>Iman</td>
-              <td>ImanR</td>
-              <td>Iman1384@email.com</td>
-              <td>berlin _example _street</td>
-              <td>
-
-                <i class="material-icons red-text m-r-5 m-l-5 hov-pointer">delete_forever</i>
-                <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
-
-              </td>
-            </tr>
-
-              </td>
-            </tr>
           </tbody>
 
-         
         </table>
 
       </div>
@@ -275,6 +235,7 @@
         </div>
 
       </div>
+
 
     </section>
 
@@ -315,6 +276,9 @@
 
      <!-- search section ______________End -->
 
+     <script src="/assets/js/axios.js"></script>
+    <script src="/assets/js/alpinejscontrolers/userscontroler.js"></script>
+    <script src="/assets/js/alpine.js"></script>
     <script src="/assets/js/users.js"></script>
     <script src="assets/materialize/js/materialize.min.js"></script>
     <script src="assets/js/main.js"></script>

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector('.add_user_modal').classList.add('show');
     document.querySelector('.add_user_modal_back').classList.remove('dis-none');
-  })
+  });
 
 
   document.querySelector('.add_user_modal_back').addEventListener('click' , (e) =>{
@@ -16,7 +16,42 @@ document.addEventListener('DOMContentLoaded', function() {
     e.target.classList.add('dis-none');
 
 
-  })
+  });
+
+
+
+  // setTimeout(function(){
+  //   console.log("Start...");
+  //   fetch('https://jsonplaceholder.typicode.com/users')
+  // .then((response) => response.json())
+  // .then((json) => {
+  //   console.log("End...");
+    
+  //   console.log(json);
+
+  //   let html = "";
+
+  //   for (const user of json) {
+      
+
+  //        html += `<tr>
+  //             <td>${user.id}</td>
+  //             <td>${user.name}</td>
+  //             <td>${user.username}</td>
+  //             <td>${user.email}</td>
+  //             <td>${user.address.city}</td>
+  //             <td>
+
+  //               <i class="material-icons red-text m-r-5 m-l-5 hov-pointer">delete_forever</i>
+  //               <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
+  //           </tr>`
+
+  //   }
+
+  //   document.querySelector('#desktop-table-body').innerHTML = html;
+
+  // }
+  // )} , 5000);
 
 
 
