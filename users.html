@@ -84,10 +84,28 @@
 
     <div class="col l2 hide-on-med-and-down"></div>
 
+    <!-- start preloader section -->
+    <template x-if="isLoaded">
+    <div class="center-align">
+    <div class="preloader-wrapper small active">
+    <div class="spinner-layer spinner-green-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </template>
+  <!-- end preloader section -->
 
     <section class="user-list-section" x-init="getUsers"> 
 
       <ul class="collapsible hide-on-med-and-up">
+        <template x-for="user in users">
         <li class="user-list-item">
           <div class="collapsible-header">
 
@@ -98,18 +116,18 @@
             <div class="p-all-5">
 
               <span class="f-bold">username :</span>
-              <span>ImanR</span>
+              <span x-text="user.username"></span>
 
             </div>
             <div class="p-all-5">
 
               <span class="f-bold">email :</span>
-              <span>iman1384@gmail.com</span>
+              <span x-text="user.email"></span>
 
             </div>
             <div class="p-all-5">
               <span class="f-bold">Address :</span>
-              <span>berlin _ example _street...</span>
+              <span x-text="user.address.city+'_'+user.address.street"></span>
             </div>
             <div>
               <span class="f-bold">Action</span>
@@ -118,66 +136,7 @@
             </div>
           </div>
         </li>
-        <li class="user-list-item">
-          <div class="collapsible-header">
-
-            <i class="material-icons blue-text darken-2 user-list-arrow-icon trans-0-2">arrow_drop_down_circle</i>
-
-          </div>
-          <div class="collapsible-body">
-            <div class="p-all-5">
-
-              <span class="f-bold">username :</span>
-              <span>ImanR</span>
-
-            </div>
-            <div class="p-all-5">
-
-              <span class="f-bold">email :</span>
-              <span>iman1384@gmail.com</span>
-
-            </div>
-            <div class="p-all-5">
-              <span class="f-bold">Address :</span>
-              <span>berlin _ example _street...</span>
-            </div>
-            <div>
-              <span class="f-bold">Action</span>
-              <i class="material-icons red-text m-r-5 m-l-5">delete_forever</i>
-              <i class="material-icons orange-text darken-3 m-r-5 m-l-5">edit</i>
-            </div>
-          </div>
-        </li>
-        <li class="user-list-item">
-          <div class="collapsible-header">
-
-            <i class="material-icons blue-text darken-2 user-list-arrow-icon trans-0-2">arrow_drop_down_circle</i>
-
-          </div>
-          <div class="collapsible-body">
-            <div class="p-all-5">
-
-              <span class="f-bold">username :</span>
-              <span>ImanR</span>
-
-            </div>
-            <div class="p-all-5">
-
-              <span class="f-bold">email :</span>
-              <span>iman1384@gmail.com</span>
-
-            </div>
-            <div class="p-all-5">
-              <span class="f-bold">Address :</span>
-              <span>berlin _ example _street...</span>
-            </div>
-            <div>
-              <span class="f-bold">Action</span>
-              <i class="material-icons red-text m-r-5 m-l-5">delete_forever</i>
-              <i class="material-icons orange-text darken-3 m-r-5 m-l-5">edit</i>
-            </div>
-          </div>
-        </li>
+        </template>
       </ul>
       
       <div class="hide-on-med-and-down show-on-medium-and-up container">

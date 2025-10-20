@@ -83,3 +83,8 @@ table.highlight > tbody > tr:hover {
 .gray{
     color: gray;
 }
+.user-list-section{
+    height: calc(100vh - 258px);
+    overflow: auto;
+
+}
