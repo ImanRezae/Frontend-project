@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   
 
-   //remember
+  //  remember
   // console.log(1);
 
   // new Promise(function (resolve, reject) {
