@@ -9,6 +9,11 @@
             itemCount : 4 ,
             pageCount : 3 ,
             searchChar : "" ,
+            newUserInfo : {
+                Name : "" ,
+                username : "" ,
+                email : "" ,
+            } ,
 
             getUsers() {
 
@@ -17,9 +22,11 @@
                     this.users = res.data
                     this.mainUsers = res.data;
                     this.pagination()
-                    this.isLoaded = false;
                     console.log(res);
                     
+                }).finally(() =>{
+                    this.isLoaded = false;
+
                 })
             } ,
                 // number of users in curentpage
@@ -59,6 +66,53 @@
                  user.email.includes(e.value)) , 100)
                  this.curentPage = 1;
                  this.pagination();
+
+            } ,
+            handlenewUserInfo() {
+                this.isLoaded = true;
+                axios.post("https://jsonplaceholder.typicode.com/users" , this.newUserInfo).then((res) => {
+                    if (res.status === 201) {
+                        this.mainUsers.push(res.data);
+                        this.showAddModal = false;
+                        this.handleResetForm();
+                        this.pagination();
+                        M.toast({html: 'کاربر با موفقیست افزوده شد', classes: 'rounded  light-green accent-3'});
+
+                    }
+                }).finally(() =>{
+                    this.isLoaded = false;
+
+                })
+                
+
+            } ,
+            handleResetForm() {
+                this.newUserInfo = {
+                    Name : '' ,
+                    username : '' ,
+                    email : ''
+                }
+
+            } ,
+            handleDeleteUser(userid) {    
+            var toastHTML = '<span>آیا از حذف کاربر اطمینان دارید؟ ('+userid+')</span><button class="btn-flat toast-action" x-on:click="handleConfirmDelete('+userid+')">بله</button>';
+            M.toast({html: toastHTML , classes: ' rounded red darken-1'});
+        
+            } ,
+            handleConfirmDelete(userid) {
+                this.isLoaded = true;
+                axios.delete("https://jsonplaceholder.typicode.com/users/"+userid).then((res) => {
+                    if (res.status === 200) {
+                        this.mainUsers = this.mainUsers.filter(user => user.id != userid);
+                        this.users = this.users.filter(user => user.id !=userid);
+                        this.pagination();
+                        M.toast({html: 'کاربر با موفقیست حذف شد', classes: 'rounded  light-green accent-3'});
+
+                    }
+                }).finally(() =>{
+                    this.isLoaded = false;
+
+                })
 
             }
             
