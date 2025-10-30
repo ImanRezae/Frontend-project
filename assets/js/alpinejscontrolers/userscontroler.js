@@ -14,6 +14,7 @@
                 username : "" ,
                 email : "" ,
             } ,
+            userIdToEdit : null ,
 
             getUsers() {
 
@@ -107,6 +108,41 @@
                         this.users = this.users.filter(user => user.id !=userid);
                         this.pagination();
                         M.toast({html: 'کاربر با موفقیست حذف شد', classes: 'rounded  light-green accent-3'});
+
+                    }
+                }).finally(() =>{
+                    this.isLoaded = false;
+
+                })
+
+            } ,
+            handleEditUser(user) {
+                axios.get("https://jsonplaceholder.typicode.com/users/"+user.id).then(res => {
+
+                    if (res.status = 200) {
+                        this.newUserInfo = {
+                        Name : user.name ,
+                        username : user.username ,
+                        email : user.email
+                }
+                this.userIdToEdit = res.data.id;
+            }
+
+            })
+                
+            this.showAddModal = true;
+
+            } ,
+            handleConfirmEditUser() {
+                this.isLoaded = true;
+                axios.put("https://jsonplaceholder.typicode.com/users/"+user.id , this.newUserInfo).then((res) => {
+                    if (res.status === 200) {
+                        const userIndex = this.mainUsers.findIndex(user => user.id == this.userIdToEdit);
+                        this.mainUsers[userIndex] = res.data;
+                        this.showAddModal = false;
+                        this.handleResetForm();
+                        this.pagination();
+                        M.toast({html: 'کاربر با موفقیست افزوده شد', classes: 'rounded  light-green accent-3'});
 
                     }
                 }).finally(() =>{

@@ -18,14 +18,14 @@
      <!-- navbar section___________Start -->
     <nav class="white z-depth-0 top-navbar">
       <div class="nav-wrapper">
-        <a href="#!" class="blue-text hide-on-med-and-up">users managment</a>
+        <a href="#!" class="blue-text hide-on-med-and-up">مدیرت کاربران</a>
         <a href="#" data-target="mobile-demo" class=" right sidenav-trigger blue-text"
           ><i class="material-icons">menu</i>
         </a>
         <ul class="hide-on-med-and-down dis-flex">
-          <li><a href="/index.html" class="blue-text">home</a></li>
-          <li><a href="badges.html" class="blue-text">codeyad</a></li>
-          <li><a href="/users.html" class="blue-text">user managment</a></li>
+          <li><a href="/index.html" class="blue-text">خانه</a></li>
+          <li><a href="badges.html" class="blue-text">کدیاد</a></li>
+          <li><a href="/users.html" class="blue-text">مدیرت کاربران</a></li>
           <li><a href="mobile.html" class="blue-text">AQ fast lesrning</a></li>
         </ul>
       </div>
@@ -52,9 +52,9 @@
         >
       </li>
       <li><div class="divider"></div></li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="/">Home</a></li>
-      <li><a class="waves-effect" href="/users.html">Users</a></li>
+      <li><a class="subheader">صفحات</a></li>
+      <li><a class="waves-effect" href="/">خانه</a></li>
+      <li><a class="waves-effect" href="/users.html">لیست کاربران</a></li>
     </ul>
 
     <!-- navbar section___________End -->
@@ -65,9 +65,9 @@
       <div class="p-l-10 p-r-10 p-t-10 col s12 m3 l2">
         <button
           id="add_user_button" class="waves-effect waves-light btn blue darken-3 p-l-30 p-l-30 w-full rounded-pill flex-c"
-          x-on:click="showAddModal = true">
+          x-on:click="showAddModal = true; userIdToEdit = null; handleResetForm()">
           <i class="material-icons m-r-5">add</i>
-          Add user
+          افزودن کاربر
         </button>
       </div>
 
@@ -79,7 +79,7 @@
         <input id="search" type="text" class="validate" x-on:keydown="handleSearch($el)"
         x-modal="searchChar"/>
         <label for="search">
-          <i class="material-icons pos-relative top-7">search</i>search</label>
+          <i class="material-icons pos-relative top-7">search</i>جست و جو</label>
       </div>
       </div>
       <div class="col l2 hide-on-med-and-down"></div>
@@ -115,24 +115,25 @@
           <div class="collapsible-body">
             <div class="p-all-5">
 
-              <span class="f-bold">username :</span>
+              <span class="f-bold">نام کاربری :</span>
               <span x-text="user.username"></span>
 
             </div>
             <div class="p-all-5">
 
-              <span class="f-bold">email :</span>
+              <span class="f-bold">ایمیل :</span>
               <span x-text="user.email"></span>
 
             </div>
             <div class="p-all-5">
-              <span class="f-bold">Address :</span>
+              <span class="f-bold">آدرس :</span>
               <span x-text="(user.address ?.city || '')+'_'+(user.address ?.street || '')"></span>
             </div>
             <div>
-              <span class="f-bold">Action</span>
+              <span class="f-bold"></span>
               <i class="material-icons red-text m-r-5 m-l-5" x-on:click="handleDeleteUser(user.id)">delete_forever</i>
-              <i class="material-icons orange-text darken-3 m-r-5 m-l-5">edit</i>
+              <i class="material-icons orange-text darken-3 m-r-5 m-l-5"
+               x-on:click="handleEditUser(user)">edit</i>
             </div>
           </div>
         </li>
@@ -144,11 +145,11 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>name</th>
-              <th>username</th>
-              <th>email</th>
-              <th>address</th>
-              <th>action</th>
+              <th>نام</th>
+              <th>نام کاربری</th>
+              <th>ایمیل</th>
+              <th>آدرس</th>
+              <th>حذف و تغییر</th>
             </tr>
           </thead>
 
@@ -163,7 +164,8 @@
               <td>
 
                 <i class="material-icons red-text m-r-5 m-l-5 hov-pointer" x-on:click="handleDeleteUser(user.id)">delete_forever</i>
-                <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer">edit</i>
+                <i class="material-icons orange-text darken-3 m-r-5 m-l-5 hov-pointer"
+                x-on:click="handleEditUser(user)">edit</i>
               </td>
             </tr>
             </template>
@@ -210,32 +212,32 @@
       <div class="row p-l-40 p-r-40 p-b-10 p-t-10 center-on-small-only">
       <h5>
         <i class="material-icons m-l-10 m-r-10 pos-relative top-4">person-add</i>
-        Add User
+        <span x-text="userIdToEdit ? 'تغییر اطلاعات' : 'افزودن کاربر' "></span>
       </h5>
 
       <form>
 
         <div class="input-field col s12">
           <input id="name" type="text" class="validate" x-model="newUserInfo.Name">
-          <label for="text">Name</label>
+          <label for="text">نام</label>
         </div>
 
         <div class="input-field col s12">
           <input id="username" type="text" class="validate" x-model="newUserInfo.username">
-          <label for="username">Username</label>
+          <label for="username">نام کاربری</label>
         </div>
 
         <div class="input-field col s12">
           <input id="email" type="email" class="validate" x-model="newUserInfo.email">
-          <label for="username">Email</label>
+          <label for="username">ایمیل</label>
         </div>
 
         <button type="button" class="waves-effect waves-light btn blue darken-3 m-t-20 
         m-b-10 w-full max-w-250 rounded-pill pulse"
-        x-on:click="handlenewUserInfo"
-        x-bind:class="{'pulse' : isLoaded}"
+        x-on:click="userIdToEdit ? handleConfirmEditUser() : handlenewUserInfo()"
+        x-bind:class="{'pulse' : isLoaded , 'orange' : userIdToEdit}"
         x-bind:disabled="isLoaded">
-          submit
+          تایید
         </button>
 
       </form>
